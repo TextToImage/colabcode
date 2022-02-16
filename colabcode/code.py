@@ -22,6 +22,7 @@ CODESERVER_VERSION = "3.10.2"
 class ColabCode:
     def __init__(
         self,
+        subdomain="ttitechdemo"
         port=10000,
         password=None,
         authtoken=None,
@@ -29,6 +30,7 @@ class ColabCode:
         code=True,
         lab=False,
     ):
+        self.subdomain = subdomain
         self.port = port
         self.password = password
         self.authtoken = authtoken
@@ -64,7 +66,7 @@ class ColabCode:
         for tunnel in active_tunnels:
             public_url = tunnel.public_url
             ngrok.disconnect(public_url)
-        url = ngrok.connect(addr=self.port, bind_tls=True)
+        url = ngrok.connect(addr=self.port,subdomain=self.subdomain,bind_tls=True)
         if self._code:
             print(f"Code Server can be accessed on: {url}")
         else:
