@@ -70,7 +70,6 @@ class ColabCode:
             print(f"Code Server can be accessed on: {url}")
         else:
             print(f"Public URL: {url}")
-            print("after public url)
 
     def _run_lab(self):
         token = str(uuid.uuid1())
