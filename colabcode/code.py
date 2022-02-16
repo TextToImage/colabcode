@@ -59,12 +59,13 @@ class ColabCode:
 
     def _start_server(self):
         if self.authtoken:
+            print(f"Auth Token Used: {self.authtoken}")
             ngrok.set_auth_token(self.authtoken)
         active_tunnels = ngrok.get_tunnels()
         for tunnel in active_tunnels:
             public_url = tunnel.public_url
             ngrok.disconnect(public_url)
-        url = ngrok.connect(addr=self.port,name="ttitechdemo1",bind_tls=True,)
+        url = ngrok.connect(addr=self.port,subdomain="ttitechdemo1",bind_tls=True,)
         if self._code:
             print(f"Code Server can be accessed on: {url}")
         else:
