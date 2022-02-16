@@ -22,7 +22,7 @@ CODESERVER_VERSION = "3.10.2"
 class ColabCode:
     def __init__(
         self,
-        subdomain="ttitechdemo",
+        subdomain=None,
         port=10000,
         password=None,
         authtoken=None,
